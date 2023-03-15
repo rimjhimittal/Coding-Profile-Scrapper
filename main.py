@@ -42,12 +42,12 @@ def datatransform():
             df.loc[n, 'Photo'] = image
             df.loc[n, 'Last Solved'] = last
             df.loc[n, 'Name'] = name
-            df.loc[n, 'Number of Questions'] = numq
+            df.loc[n, 'Number of Questions'] = int(numq)
             n=n+1
         except:
             pass
         
-    a = df.sort_values(by='Rank')
+    a = df.sort_values(by='Number of Questions', ascending=False)
     print(a)
     b = a.to_csv('details.csv', index=False)
     return a
