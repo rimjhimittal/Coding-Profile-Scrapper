@@ -46,6 +46,7 @@ def datatransform():
             n=n+1
         except:
             pass
+        #hehe
         
     a = df.sort_values(by='Rank')
     print(a)
