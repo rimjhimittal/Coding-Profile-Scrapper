@@ -6,6 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
+    
     leetcode_name = models.CharField(max_length=100, null=True, blank=True, default=None)    
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
@@ -33,14 +34,14 @@ class User(AbstractBaseUser):
         return self.email
     
 
-class leetcode_details(models.Model):
+class leetcode_acc(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, null=True, blank=True, default=None)
-    username = models.CharField(max_length=100, null=True, blank=True, default=None)
-    rank= models.CharField(max_length=100, null=True, blank=True, default=None)
-    photo_url = models.CharField(max_length=100, null=True, blank=True, default=None)
-    number_of_questions = models.IntegerField(null=True, blank=True, default=None)
-    last_solved = models.CharField(max_length=100, null=True, blank=True, default=None)
+    username = models.CharField(max_length=100, null=False, blank=False, unique=True, default="")
+    name = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
+    rank= models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
+    photo_url = models.CharField(max_length=100, null=True, blank=True, default="Scarping..")
+    number_of_questions = models.IntegerField(null=True, blank=True, default=0)
+    last_solved = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
     
     def __str__(self):
         return self.username

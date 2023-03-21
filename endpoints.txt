@@ -1,0 +1,50 @@
+1) register/
+inputs field names: 
+email
+password
+leetcode_name (can be empty or can be ignored, refers to leetcode username)
+
+response:
+{
+    "status": "success"
+} and status 201
+
+{
+    "error": "please provide both email and password"
+} and status code 400
+
+
+
+2) login/
+inputs field names:
+email
+password
+
+response:
+{
+    "key": <token>,
+    "email": <email>
+}
+{'error': 'Invalid Credentials'} and status code 401
+
+
+
+3) register_leetcode/
+usage : to register leetcode username to an existing user
+Header:
+Authorization: token <token>
+Eg:-
+Authorization : token baf8bb0d58f5420e8d7ec3aec774e4a
+
+inputs field names: 
+leetcode_name (refers to leetcode username)
+
+output:
+{
+    "status": "success"
+}and status code 201
+
+{'error': 'leetcode account for this user already exists'} and status code 400
+
+
+{'error': 'Please provide leetcode username'} and status code 400
