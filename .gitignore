@@ -45,7 +45,8 @@ database
 #virtual environment
 venv
 
-
+#redis
+*.rdb
 
 
 #ssl certificates
