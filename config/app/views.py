@@ -72,12 +72,17 @@ class login(APIView):
     
     
 class getLeetcodeInfo(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     def get(self, request, *args, **kwargs):
-        user=request.user
-        if (leetcode_acc.objects.filter(user=user).exists()):
-            account=leetcode_acc.objects.filter(user=user).first()
+        # user=request.user
+        # if (leetcode_acc.objects.filter(user=user).exists()):
+        #     account=leetcode_acc.objects.filter(user=user).first()
+        result =[]
+        accounts = leetcode_acc.objects.all().order_by('-number_of_questions')
+        n=1
+        for account in accounts:
             d={
+                'serialNumber':n,
                 'username':account.username,
                 'name':account.name,
                 'rank':account.rank,
@@ -85,8 +90,8 @@ class getLeetcodeInfo(APIView):
                 'number_of_questions':account.number_of_questions,
                 'last_solved':account.last_solved
             }
-            return Response(d,status=status.HTTP_200_OK)
-        else:
-            return Response({'error':'leetcode account for this user does not exist'},status=status.HTTP_400_BAD_REQUEST)
+            result.append(d)
+            n+=1
+        return Response(result,status=status.HTTP_200_OK)
+        
     
-
