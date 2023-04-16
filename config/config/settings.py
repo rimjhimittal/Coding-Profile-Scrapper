@@ -152,7 +152,7 @@ CELERY_TIMEZONE = 'Asia/Kolkata'
 CELERY_BEAT_SCHEDULE = {
     # "scheduled_task1": {
     #     "task": "app.tasks.scrape_leetcode",
-    #     "schedule": 20,
+    #     "schedule": 60,
     # },
     "scheduled_task2": {
         "task": "app.tasks.scrape_codechef",

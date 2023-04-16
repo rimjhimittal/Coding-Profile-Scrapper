@@ -53,7 +53,7 @@ class codechef_acc(models.Model):
     global_rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")
     country_rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")    
     rating = models.IntegerField(null=True, blank=True, default=0)
-    stars = models.IntegerField(null=True, blank=True, default=0)
+    stars = models.CharField(max_length=10, null=True, blank=True)
     photo_url = models.CharField(max_length=100, null=True, blank=True, default="Scarping..")
     number_of_questions = models.CharField(max_length=10,null=True, blank=True, default='0')
     

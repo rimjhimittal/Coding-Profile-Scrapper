@@ -20,15 +20,15 @@ class register(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        # leetcode_name=request.data.get('leetcode_name')
+        leetcode_name=request.data.get('leetcode_name')
         if email is None or password is None:
             return Response({'error': 'Please provide both email and password'},
                             status=status.HTTP_400_BAD_REQUEST)
         user = User.objects.create_user(email,password)
         user.save()
-        # if leetcode_name is not None or leetcode_name=='':
-        #     account = leetcode_acc.objects.create(user=user,username=leetcode_name)
-        #     account.save()
+        if leetcode_name is not None or leetcode_name=='':
+            account = leetcode_acc.objects.create(user=user,username=leetcode_name)
+            account.save()
         return Response({'status':'success'},status=status.HTTP_201_CREATED)
     
 class register_leetcode(APIView):
