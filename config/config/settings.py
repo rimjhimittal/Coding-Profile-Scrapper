@@ -150,10 +150,14 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
 
 CELERY_BEAT_SCHEDULE = {
-    "scheduled_task": {
-        "task": "app.tasks.scrape",
+    # "scheduled_task1": {
+    #     "task": "app.tasks.scrape_leetcode",
+    #     "schedule": 20,
+    # },
+    "scheduled_task2": {
+        "task": "app.tasks.scrape_codechef",
         "schedule": 20,
-    },
+    }   
 }
 
 

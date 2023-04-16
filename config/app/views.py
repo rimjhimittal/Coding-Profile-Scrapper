@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 import requests
 
-from .models import User,leetcode_acc
+from .models import User,leetcode_acc,codechef_acc
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -20,15 +20,15 @@ class register(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        leetcode_name=request.data.get('leetcode_name')
+        # leetcode_name=request.data.get('leetcode_name')
         if email is None or password is None:
             return Response({'error': 'Please provide both email and password'},
                             status=status.HTTP_400_BAD_REQUEST)
         user = User.objects.create_user(email,password)
         user.save()
-        if leetcode_name is not None or leetcode_name=='':
-            account = leetcode_acc.objects.create(user=user,username=leetcode_name)
-            account.save()
+        # if leetcode_name is not None or leetcode_name=='':
+        #     account = leetcode_acc.objects.create(user=user,username=leetcode_name)
+        #     account.save()
         return Response({'status':'success'},status=status.HTTP_201_CREATED)
     
 class register_leetcode(APIView):
@@ -36,13 +36,29 @@ class register_leetcode(APIView):
     
     def post(self, request, *args, **kwargs):
         user=request.user
-        if (leetcode_acc.objects.filter(user=user).exists()):
+        if (codechef_acc.objects.filter(user=user).exists()):
             return Response({'error': 'leetcode account for this user already exists'},status=status.HTTP_400_BAD_REQUEST)
         leetcode_name = request.data.get('leetcode_name')
         if leetcode_name is None or leetcode_name=='':
             return Response({'error': 'Please provide leetcode name'},
                             status=status.HTTP_400_BAD_REQUEST)
         leetcode_acc.objects.create(user=user,username=leetcode_name)
+        
+        
+        return Response({'status':'success'},status=status.HTTP_201_CREATED)
+
+class register_codechef(APIView):
+    permission_classes = (IsAuthenticated,)
+    
+    def post(self, request, *args, **kwargs):
+        user=request.user
+        if (codechef_acc.objects.filter(user=user).exists()):
+            return Response({'error': 'Codechef account for this user already exists'},status=status.HTTP_400_BAD_REQUEST)
+        codechef_name = request.data.get('codechef_name')
+        if codechef_name is None or codechef_name=='':
+            return Response({'error': 'Please provide leetcode name'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        codechef_acc.objects.create(user=user,username=codechef_name)
         
         
         return Response({'status':'success'},status=status.HTTP_201_CREATED)

@@ -38,10 +38,24 @@ class leetcode_acc(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     username = models.CharField(max_length=100, null=False, blank=False, unique=True, default="")
     name = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
-    rank= models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
-    photo_url = models.CharField(max_length=100, null=True, blank=True, default="Scarping..")
+    rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")
+    photo_url = models.CharField(max_length=200, null=True, blank=True, default="Scarping..")
     number_of_questions = models.IntegerField(null=True, blank=True, default=0)
-    last_solved = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
+    last_solved = models.CharField(max_length=50, null=True, blank=True, default="Scraping..")
+    
+    def __str__(self):
+        return self.username
+
+class codechef_acc(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    username = models.CharField(max_length=100, null=False, blank=False, unique=True, default="")
+    name = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
+    global_rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")
+    country_rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")    
+    rating = models.IntegerField(null=True, blank=True, default=0)
+    stars = models.IntegerField(null=True, blank=True, default=0)
+    photo_url = models.CharField(max_length=100, null=True, blank=True, default="Scarping..")
+    number_of_questions = models.CharField(max_length=10,null=True, blank=True, default='0')
     
     def __str__(self):
         return self.username

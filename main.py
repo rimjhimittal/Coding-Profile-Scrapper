@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 
 def datatransform():
     n = 1
-    username = ["rimjhimittal", 'chandravob', 'rdotjain','askandola', 'tijilm', 'mhardik003_', 'shreeyachatzz', 'yashmittal', 'gunjeevsingh', 'anshbajaj07', 'happy2901', 'aitchessbee', 'samikm']
-    # username = ["rimjhimittal", 'chandravob']
+    # username = ["rimjhimittal", 'chandravob', 'rdotjain','askandola', 'tijilm', 'mhardik003_', 'shreeyachatzz', 'yashmittal', 'gunjeevsingh', 'anshbajaj07', 'happy2901', 'aitchessbee', 'samikm']
+    username = ["rimjhimittal", 'chandravob','lovedeep']
     df = pd.DataFrame(columns=['Name', 'Username', 'Rank', 'Photo', 'Last Solved', 'Number of Questions'])
     for k in username:
         try:

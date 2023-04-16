@@ -23,7 +23,7 @@ def datatransform():
     n = 1
     # username = ["rimjhimittal", 'chandravob', 'rdotjain','askandola', 'tijilm', 'mhardik003_', 'shreeyachatzz', 'yashmittal', 'gunjeevsingh', 'anshbajaj07', 'happy2901', 'aitchessbee', 'samikm']
     
-    username = ['chandravo']
+    username = ['chandravo','kyiv','sdfdghfdrewthgjgtrethj']
     df = pd.DataFrame(columns=['Name', 'Username', 'Global Rank', 'Country Rank', 'Photo', 'Rating', 'Stars', 'Number of Questions'])
     
     for k in username:
@@ -65,7 +65,13 @@ def datatransform():
             
             img=soup.find("img",class_="profileImage").attrs['src']
             
-
+            print(name)
+            print(global_rank)
+            print(country_rank)
+            print(rating)
+            print(stars)
+            print(numq)
+            print(img)
             print(name," done")
             # # rank2 = ""
             # # for i in rank:
