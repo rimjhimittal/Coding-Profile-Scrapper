@@ -51,17 +51,40 @@ output:
 
 
 3) getLeetcodeInfo/
-usage : to get leetcode info about a user
+usage : to get leetcode leaderboard info 
 
 Header:
 Authorization : token <token>
 
 output:
 {
-    "username": "rimjhimittal",
-    "name": "Rimjhim Mittal",
-    "rank": "900,547",
-    "photo_url": "https://assets.leetcode.com/users/avatars/avatar_1668491883.png",
-    "number_of_questions": 58,
-    "last_solved": "10 days ago"
+    {
+        "username": "rimjhimittal",
+        "name": "Rimjhim Mittal",
+        "rank": "900,547",
+        "photo_url": "https://assets.leetcode.com/users/avatars/avatar_1668491883.png",
+        "number_of_questions": 58,
+        "last_solved": "10 days ago"
+    }
 }
+
+4) getCodechefInfo/
+usage : to get codechef leaderboard info
+
+Header :
+Authorization : token <token>
+
+output:
+[
+    {
+        "serialNumber": 1,
+        "username": "chandravo",
+        "name": "Chandravo Bhattacharya",
+        "rating": 1382,
+        "global_rank": "65169",
+        "country_rank": "60159",
+        "stars": "1 star",
+        "photo_url": "https://cdn.codechef.com/sites/default/files/uploads/pictures/651508545b2faff91e2beaafdd3a5628.jpg",
+        "number_of_questions": "45"
+    }
+]
