@@ -2499,21 +2499,21 @@ export const stackedPrimaryYAxis = {
   labelFormat: '{value}',
 };
 
-// export const kanbanData = [
-//   {
-//     Id: 'Task 1',
-//     Title: 'Task - 29001',
-//     Status: 'Open',
-//     Summary: 'Analyze the new requirements gathered from the customer.',
-//     Type: 'Story',
-//     Priority: 'Low',
-//     Tags: 'Analyze,Customer',
-//     Estimate: 3.5,
-//     Assignee: 'Nancy Davloio',
-//     RankId: 1,
-//     Color: '#02897B',
-//     ClassName: 'e-story, e-low, e-nancy-davloio',
-//   },
+export const kanbanData = [
+  {
+    Id: 'Task 1',
+    Title: 'Task - 29001',
+    Status: 'Open',
+    Summary: 'Analyze the new requirements gathered from the customer.',
+    Type: 'Story',
+    Priority: 'Low',
+    Tags: 'Analyze,Customer',
+    Estimate: 3.5,
+    Assignee: 'Nancy Davloio',
+    RankId: 1,
+    Color: '#02897B',
+    ClassName: 'e-story, e-low, e-nancy-davloio',
+  }]
 //   {
 //     Id: 'Task 2',
 //     Title: 'Task - 29002',
@@ -2852,15 +2852,15 @@ export const stackedPrimaryYAxis = {
 //   },
 // ];
 
-// export const financialChartData = [
-//   {
-//     x: new Date('2012-04-02'),
-//     open: 85.9757,
-//     high: 90.6657,
-//     low: 85.7685,
-//     close: 90.5257,
-//     volume: 660187068,
-//   },
+export const financialChartData = [
+  {
+    x: new Date('2012-04-02'),
+    open: 85.9757,
+    high: 90.6657,
+    low: 85.7685,
+    close: 90.5257,
+    volume: 660187068,
+  }]
 //   {
 //     x: new Date('2012-04-09'),
 //     open: 89.4471,
