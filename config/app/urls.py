@@ -8,5 +8,6 @@ urlpatterns =[
     path('register_codechef/', views.register_codechef.as_view()),
     path('login/', views.login.as_view()),
     path('getLeetcodeInfo/', views.getLeetcodeInfo.as_view()),
+    path('getCodechefInfo/', views.getCodechefInfo.as_view()),
     # path('home/', views.show_rooms.as_view()),
 ]

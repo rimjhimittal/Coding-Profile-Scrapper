@@ -80,10 +80,10 @@ export default function Leetcode() {
               template={(rowData) => <img src={rowData.photo_url} style={{ borderRadius: "50%" }} alt="Profile" width="50" height="50" />}
             />
             <ColumnDirective field="name" headerText="Name" textAlign="center" width="90" />
+            <ColumnDirective field="username" headerText="Username" textAlign="center" width="120" />
             <ColumnDirective field="rank" headerText="Rank" textAlign="center" width="120" />
             <ColumnDirective field="number_of_questions" headerText="Number of Questions" textAlign="center" width="120" />
             <ColumnDirective field="last_solved" headerText="Last Solved" textAlign="center" width="120" />
-            <ColumnDirective field="username" headerText="Username" textAlign="center" width="120" />
 
           </ColumnsDirective>
           <Inject services={[Resize, Sort, ContextMenu, Filter, Page, ExcelExport, Edit, PdfExport]} />

@@ -109,5 +109,30 @@ class getLeetcodeInfo(APIView):
             result.append(d)
             n+=1
         return Response(result,status=status.HTTP_200_OK)
+
+class getCodechefInfo(APIView):
+    # permission_classes = (IsAuthenticated,)
+    def get(self, request, *args, **kwargs):
+        # user=request.user
+        # if (leetcode_acc.objects.filter(user=user).exists()):
+        #     account=leetcode_acc.objects.filter(user=user).first()
+        result =[]
+        accounts = codechef_acc.objects.all().order_by('-rating')
+        n=1
+        for account in accounts:
+            d={
+                'serialNumber':n,
+                'username':account.username,
+                'name':account.name,
+                'rating':account.rating,
+                'global_rank':account.global_rank,
+                'country_rank':account.country_rank,
+                'stars':account.stars,
+                'photo_url':account.photo_url,
+                'number_of_questions':account.number_of_questions,
+            }
+            result.append(d)
+            n+=1
+        return Response(result,status=status.HTTP_200_OK)
         
     
