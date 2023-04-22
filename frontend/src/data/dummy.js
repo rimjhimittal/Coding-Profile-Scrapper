@@ -613,45 +613,60 @@ export const chatData = [
   },
 ];
 
+export const userData = [
+  {
+    name: 'Rimjhim',
+    branch: 'COE',
+    year: '2nd',
+    image: './rim.jpeg',
+    position: 'Core Member',
+    insta: 'https://www.instagram.com/rimjhimittal',
+    linkedin: 'https://www.linkedin.com/in/rimjhimittal',
+  
+  }
+]
+
 export const earningData = [
   {
-    icon: <MdOutlineSupervisorAccount />,
-    amount: '39,354',
-    percentage: '-4%',
-    title: 'Customers',
-    iconColor: '#03C9D7',
-    iconBg: '#E5FAFB',
-    pcColor: 'red-600',
-  },
-  {
-    icon: <BsBoxSeam />,
-    amount: '4,396',
-    percentage: '+23%',
-    title: 'Products',
-    iconColor: 'rgb(255, 244, 229)',
-    iconBg: 'rgb(254, 201, 15)',
+    icon: <SiLeetcode />,
+    rank: '67,000',
+    intra_rank: '7',
+    title: 'Leetcode',
+    iconBg: '#f4e4cc',
+    iconColor: '#ae8443',
     pcColor: 'green-600',
   },
   {
-    icon: <FiBarChart />,
-    amount: '423,39',
-    percentage: '+38%',
-    title: 'Sales',
+    icon: <SiCodechef />,
+    rank: '4,396',
+    intra_rank: '7',
+    title: 'CodeChef',
+    iconColor: '#5b4436',
+    iconBg: '#efe9db',
+    pcColor: 'green-600',
+  },
+  {
+    icon: <SiCodeforces />,
+    rank: '423,39',
+    intra_rank: '7',
+    title: 'Codeforces',
     iconColor: 'rgb(228, 106, 118)',
     iconBg: 'rgb(255, 244, 229)',
 
     pcColor: 'green-600',
   },
-  {
-    icon: <HiOutlineRefresh />,
-    amount: '39,354',
-    percentage: '-12%',
-    title: 'Refunds',
-    iconColor: 'rgb(0, 194, 146)',
-    iconBg: 'rgb(235, 250, 242)',
-    pcColor: 'red-600',
-  },
+  // {
+  //   icon: <HiOutlineRefresh />,
+  //   amount: '39,354',
+  //   percentage: '-12%',
+  //   title: 'Refunds',
+  //   iconColor: 'rgb(0, 194, 146)',
+  //   iconBg: 'rgb(235, 250, 242)',
+  //   pcColor: 'red-600',
+  // },
 ];
+
+
 
 export const recentTransactions = [
   {

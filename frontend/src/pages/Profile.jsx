@@ -5,7 +5,7 @@ import { IoIosMore } from 'react-icons/io';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 
 import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
-import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
+import { userData, earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
 
@@ -21,7 +21,34 @@ const Profile = () => {
   return (
     <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
+        
+      <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
+          {userData.map((item) => (
+            <div key={item.name} className="bg-white h-50 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-100  p-4 pt-9 rounded-2xl ">
+              <button
+                type="button"
+                style={{ color: item.iconColor, backgroundColor: item.iconBg }}
+                className="text-2xl opacity-0.9 rounded-full  p-4 hover:drop-shadow-xl"
+              >
+                {item.image}
+              </button>
+              <p className="mt-3">
+              Name: <span className="text-lg font-semibold"> {item.name}</span>
+              </p>
+              <p className="mt-3">
+              Year: <span className="text-lg font-semibold"> {item.year}</span>
+              </p>
+              <p className="mt-3">
+              Branch: <span className="text-lg font-semibold"> {item.branch}</span>
+              </p>
+              <p className="mt-3">
+              Position: <span className="text-lg font-semibold"> {item.position}</span><br></br>
+              </p>
+              {/* <p className="text-sm text-gray-400  mt-1">{item.name}</p> */}
+            </div>
+          ))}
+        </div>
+         {/* <div className="bg black:text-gray-200 dark:bg-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
@@ -43,12 +70,11 @@ const Profile = () => {
               borderRadius="10px"
             />
           </div>
-        </div>
-
+        </div>  */}
         {/* Second small box */}
-        {/* <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
+        <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
           {earningData.map((item) => (
-            <div key={item.title} className="bg-white h-44 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
+            <div key={item.title} className="bg-white h-49 dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl ">
               <button
                 type="button"
                 style={{ color: item.iconColor, backgroundColor: item.iconBg }}
@@ -57,15 +83,15 @@ const Profile = () => {
                 {item.icon}
               </button>
               <p className="mt-3">
-                <span className="text-lg font-semibold">{item.amount}</span>
+              Rank: <span className="text-lg font-semibold"> {item.rank}</span><br></br>
                 <span className={`text-sm text-${item.pcColor} ml-2`}>
-                  {item.percentage}
+                  {item.intra_rank} Questions solved
                 </span>
               </p>
               <p className="text-sm text-gray-400  mt-1">{item.title}</p>
             </div>
           ))}
-        </div> */}
+        </div>
 
 
       </div> 
@@ -155,7 +181,7 @@ const Profile = () => {
         </div>
       </div> */}
 
-      <div className="flex gap-10 m-4 flex-wrap justify-center">
+       {/* <div className="flex gap-10 m-4 flex-wrap justify-center">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Recent Transactions</p>
@@ -206,9 +232,9 @@ const Profile = () => {
             <LineChart />
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-wrap justify-center">
+      {/* <div className="flex flex-wrap justify-center">
         <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Weekly Stats</p>
@@ -328,8 +354,8 @@ const Profile = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div> */}
     </div>
   );
 };

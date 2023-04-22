@@ -12,7 +12,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
-    <button
+    {/* <button
       type="button"
       onClick={() => customFunc()}
       style={{ color }}
@@ -23,7 +23,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
       />
       {icon}
-    </button>
+    </button> */}
   </TooltipComponent>
 );
 
