@@ -78,7 +78,7 @@ class login(APIView):
             return Response({'error': 'Invalid Credentials'}, status=status.HTTP_400_BAD_REQUEST)
         
         token = Token.objects.get_or_create(user=user)
-
+        print('done')
         data = {
             'key': token[0].key,
             'email': user.email,
