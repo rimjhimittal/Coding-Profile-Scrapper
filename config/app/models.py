@@ -6,8 +6,10 @@ from django.contrib.auth.models import PermissionsMixin
 
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
+    name = models.CharField(max_length=100, null=True, blank=True, default=None)
+    branch = models.CharField(max_length=100, null=True, blank=True, default=None)
     
-    leetcode_name = models.CharField(max_length=100, null=True, blank=True, default=None)    
+    # leetcode_name = models.CharField(max_length=100, null=True, blank=True, default=None)    
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -35,7 +37,7 @@ class User(AbstractBaseUser):
     
 
 class leetcode_acc(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='leetcode')
     username = models.CharField(max_length=100, null=False, blank=False, unique=True, default="")
     name = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
     rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")
@@ -47,7 +49,7 @@ class leetcode_acc(models.Model):
         return self.username
 
 class codechef_acc(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='codechef')
     username = models.CharField(max_length=100, null=False, blank=False, unique=True, default="")
     name = models.CharField(max_length=100, null=True, blank=True, default="Scraping..")
     global_rank= models.CharField(max_length=10, null=True, blank=True, default="Scraping..")
