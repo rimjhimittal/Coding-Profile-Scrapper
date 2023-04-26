@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
-        {/* <div className="flex relative dark:bg-main-dark-bg">
+        <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent
               content="Settings"
@@ -62,7 +62,7 @@ const App = () => {
               <Navbar />
             </div>
             <div>
-              {themeSettings && (<ThemeSettings />)} */}
+              {themeSettings && (<ThemeSettings />)}
 
               <Routes>
                 {/* {!authCtx.isLoggedIn && <Route path="/login" element={<LoginPage />} />} */}
@@ -93,10 +93,10 @@ const App = () => {
                 <Route path="/stacked" element={<Stacked />} /> */}
 
               </Routes>
-            {/* </div>
+            </div>
             <Footer />
           </div>
-        </div> */}
+        </div>
       </BrowserRouter>
     </div>
   );
