@@ -1,99 +1,106 @@
 import React from 'react';
-import Loginbox from './loginbox';
 import './login.css';
-class LoginPage extends React.Component {
 
-  constructor()
-  {
+class LoginPage extends React.Component {
+  constructor() {
     super();
-    this.state={
-      email:"",
-      password:"",
+    this.state = {
+      email: '',
+      password: '',
       login: false,
       store: null
+    };
+  }
+
+  componentDidMount() {
+    this.storeCollector();
+  }
+
+  storeCollector() {
+    let store = JSON.parse(localStorage.getItem('login'));
+    if (store && store.login) {
+      this.setState({ login: true, store: store.token });
     }
   }
 
-componentDidMount(){
-  this.storeCollector()
-}
-storeCollector(){
-  let store=JSON.parse(localStorage.getItem("login"));
-  if(store && store.login){
-    this.setState({login:true,store:store.token})
-  }
-}
-
-  login(){
-    fetch('', {
+  login() {
+    fetch('http://127.0.0.1:8000/login/', {
       method: 'POST',
-      body:JSON.stringify(this.state)
-    }).then((result)=>{
-      result.json().then((resp)=>{
-        console.warn(resp)
-        localStorage.setItem("login",JSON.stringify({
-          login: true,
-          store: resp.token
-        }))
-        this.setState({login:true,store:resp.token})
-      })
-    })
+      body: JSON.stringify(this.state)
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.log(resp);
+        localStorage.setItem(
+          'login',
+          JSON.stringify({
+            login: true,
+            store: resp.token
+          })
+        );
+        this.setState({ login: true, store: resp.token });
+      });
+    });
   }
-  // post(){
-  //   let token= 'Bearer' + this.state.store.token
-  //   fetch('', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Authorization': token,
-  //     },
-  //     body:JSON.stringify(this.state.post)
-  //   }).then((result)=>{
-  //     result.json().then((resp)=>{
-  //       console.warn(resp)
-  //     })
-  //   })
-  // }
-  render(){
-  return (
-    <div>
-      <body classNameName="login-page">
-    <div className="login-box">
-        <h2 className="heading-login-box">Login</h2>
-        {!this.state.login?
-        <form>
-            <div className="user-box">
-                <input className="user-box-input" onChange={(event)=>{this.setState({email:event.target.value})}} type="text" required />
+
+  logout() {
+    localStorage.removeItem('login');
+    this.setState({ login: false, store: null });
+  }
+
+  render() {
+    return (
+      <div className="login-page">
+        <div className="login-box">
+          <h2 className="heading-login-box">Login</h2>
+          {!this.state.login ? (
+            <form>
+              <div className="user-box">
+                <input
+                  className="user-box-input"
+                  onChange={(event) => {
+                    this.setState({ email: event.target.value });
+                  }}
+                  type="text"
+                  value={this.state.email}
+                  required
+                />
                 <label className="user-box-label">Email</label>
-            </div>
-            <div className="user-box">
-                <input className="user-box-input" onChange={(event)=>{this.setState({password:event.target.value})}} type="password" required />
+              </div>
+              <div className="user-box">
+                <input
+                  className="user-box-input"
+                  onChange={(event) => {
+                    this.setState({ password: event.target.value });
+                  }}
+                  type="password"
+                  required
+                />
                 <label className="user-box-label">Password</label>
-            </div>
-            <a type="submit" className="login-box-button" href="/" >
+              </div>
+              <a
+                type="submit"
+                className="login-box-button"
+                href="/"
+                onClick={() => this.login()}
+              >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Submit
-            </a>
-        </form>
-        : 
-        <div></div>
-        }
+              </a>
+            </form>
+          ) : (
+            <div>
+              <p>Welcome! You are logged in.</p>
+              <button onClick={() => this.logout()}>Logout</button>
+            </div>
+          )}
 
-        {/* <div>
-          <textarea onChange={(event)=>this.setState({post:event.target.value})}>
-          </textarea>
-             <button onClick={()=>{this.post()}}>Post</button> 
-          
-        </div> */}
-    </div>
-</body>
-    </div>
- 
+        </div>
+      </div>
     );
-      
-}
+  }
 }
 
 export default LoginPage;

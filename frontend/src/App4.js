@@ -2,25 +2,14 @@ import React, { useEffect, useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import AuthContext from './pages/Login/auth-context';
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Profile, Codeforces, Leetcode, Calendar, Codechef, Stacked, Pyramid, Github, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { Profile, Codeforces, Leetcode, Codechef, Github} from './pages';
 import './App.css';
 import LoginPage from './pages/Login/loginpage';
 import { useStateContext } from './contexts/ContextProvider';
 
 const App = () => {
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-
-  const authCtx = useContext(AuthContext);
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, []);
+  const { currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -76,21 +65,6 @@ const App = () => {
                 <Route path="/codeforces" element={<Codeforces />} />
                 <Route path="/github" element={<Github />} />
 
-                {/* apps  */}
-                {/* <Route path="/kanban" element={<Kanban />} />
-                <Route path="/editor" element={<Editor />} />
-                <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} /> */}
-
-                {/* charts  */}
-                {/* <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/financial" element={<Financial />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
-                <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} /> */}
 
               </Routes>
             </div>
