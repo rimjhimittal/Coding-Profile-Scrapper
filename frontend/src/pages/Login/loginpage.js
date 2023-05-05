@@ -23,24 +23,37 @@ class LoginPage extends React.Component {
     }
   }
 
-  login() {
+  login(e) {
+    e.preventDefault()
     fetch('http://127.0.0.1:8000/login/', {
       method: 'POST',
-      body: JSON.stringify(this.state)
-    }).then((result) => {
-      result.json().then((resp) => {
-        console.log(resp);
-        localStorage.setItem(
-          'login',
-          JSON.stringify({
-            login: true,
-            store: resp.token
-          })
-        );
-        this.setState({ login: true, store: resp.token });
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((result) => {
+        if (result.ok) {
+          result.json().then((resp) => {
+            console.log(resp);
+            localStorage.setItem(
+              'login',
+              JSON.stringify({
+                login: true,
+                store: resp.token
+              })
+            );
+            this.setState({ login: true, store: resp.token });
+          });
+        } else {
+          throw new Error('Login failed');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    });
   }
+  
 
   logout() {
     localStorage.removeItem('login');
@@ -77,18 +90,17 @@ class LoginPage extends React.Component {
                 />
                 <label className="user-box-label">Password</label>
               </div>
-              <a
+              <button
                 type="submit"
                 className="login-box-button"
-                href="/"
-                onClick={() => this.login()}
+                onClick={(e) => this.login(e)}
               >
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Submit
-              </a>
+              </button>
             </form>
           ) : (
             <div>
