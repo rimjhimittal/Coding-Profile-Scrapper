@@ -1,3 +1,4 @@
 #leetcode-scrapper
 <img width="1440" alt="image" src="https://github.com/rimjhimittal/Coding-Profile-Scrapper/assets/100460360/42f4ab22-b1ae-48ff-8bc2-37a3c3483521">
-
+In this web application, Celery and Redis work together to handle data scraping and processing tasks efficiently. When a user requests data from LeetCode or CodeChef, the application doesn't scrape the data in real-time. Instead, these tasks are offloaded to Celery, which processes them in the background, possibly at regular intervals or triggered by specific events.
+Redis, acting as a broker, manages the task queues for Celery and might also cache the scraped data. When a user makes a request, the application can quickly retrieve the latest scraped data from the Redis cache instead of waiting for a live scrape, enhancing the user experience by providing faster response times.
